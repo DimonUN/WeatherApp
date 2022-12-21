@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CountryDataModel" representedClassName="CountryDataModel" syncable="YES" codeGenerationType="class"/>
+    <entity name="FactDataModel" representedClassName="FactDataModel" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudness" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="condition" optional="YES" attributeType="String"/>
+        <attribute name="daytime" optional="YES" attributeType="String"/>
+        <attribute name="feelsLike" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="obsTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="precStrength" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="precType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="temp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uvIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="windDir" optional="YES" attributeType="String"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherDataModel" inverseName="fact" inverseEntity="WeatherDataModel"/>
+    </entity>
+    <entity name="ForecastsDataModel" representedClassName="ForecastsDataModel" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="dateTs" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="moonCode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="riseBegin" optional="YES" attributeType="String"/>
+        <attribute name="setEnd" optional="YES" attributeType="String"/>
+        <attribute name="sunrise" optional="YES" attributeType="String"/>
+        <attribute name="sunset" optional="YES" attributeType="String"/>
+        <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PartsHourDataModel" inverseName="day" inverseEntity="PartsHourDataModel"/>
+        <relationship name="hours" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HourDataModel" inverseName="forecasts" inverseEntity="HourDataModel"/>
+        <relationship name="night" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PartsHourDataModel" inverseName="night" inverseEntity="PartsHourDataModel"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherDataModel" inverseName="forecasts" inverseEntity="WeatherDataModel"/>
+    </entity>
+    <entity name="GeoObjectDataModel" representedClassName="GeoObjectDataModel" syncable="YES" codeGenerationType="class">
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="district" optional="YES" attributeType="String"/>
+        <attribute name="locality" optional="YES" attributeType="String"/>
+        <attribute name="province" optional="YES" attributeType="String"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherDataModel" inverseName="geoObject" inverseEntity="WeatherDataModel"/>
+    </entity>
+    <entity name="HourDataModel" representedClassName="HourDataModel" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudness" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="condition" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="daytime" optional="YES" attributeType="String"/>
+        <attribute name="feelsLike" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="hour" optional="YES" attributeType="String"/>
+        <attribute name="hourTs" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="precStrength" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="precType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="temp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tempAvg" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tempMax" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tempMin" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uvIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="windDir" optional="YES" attributeType="String"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="forecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ForecastsDataModel" inverseName="hours" inverseEntity="ForecastsDataModel"/>
+    </entity>
+    <entity name="PartsDataModel" representedClassName="PartsDataModel" syncable="YES" codeGenerationType="class"/>
+    <entity name="PartsHourDataModel" representedClassName="PartsHourDataModel" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudness" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="condition" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="daytime" optional="YES" attributeType="String"/>
+        <attribute name="feelsLike" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="precStrength" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="precType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="tempAvg" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tempMax" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tempMin" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uvIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="windDir" optional="YES" attributeType="String"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ForecastsDataModel" inverseName="day" inverseEntity="ForecastsDataModel"/>
+        <relationship name="night" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ForecastsDataModel" inverseName="night" inverseEntity="ForecastsDataModel"/>
+    </entity>
+    <entity name="WeatherDataModel" representedClassName="WeatherDataModel" syncable="YES" codeGenerationType="class">
+        <attribute name="now" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nowDt" optional="YES" attributeType="String"/>
+        <relationship name="fact" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FactDataModel" inverseName="weather" inverseEntity="FactDataModel"/>
+        <relationship name="forecasts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ForecastsDataModel" inverseName="weather" inverseEntity="ForecastsDataModel"/>
+        <relationship name="geoObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GeoObjectDataModel" inverseName="weather" inverseEntity="GeoObjectDataModel"/>
+    </entity>
+    <elements>
+        <element name="CountryDataModel" positionX="-119.4296875" positionY="65.5234375" width="128" height="29"/>
+        <element name="FactDataModel" positionX="-265.0625" positionY="-40.98046875" width="128" height="239"/>
+        <element name="ForecastsDataModel" positionX="-27" positionY="36" width="128" height="194"/>
+        <element name="GeoObjectDataModel" positionX="-63" positionY="0" width="128" height="104"/>
+        <element name="HourDataModel" positionX="222.31640625" positionY="169.87109375" width="128" height="314"/>
+        <element name="Nn" positionX="116.25" positionY="-148.30859375" width="128" height="29"/>
+        <element name="PartsDataModel" positionX="39.55078125" positionY="186.984375" width="128" height="29"/>
+        <element name="PartsHourDataModel" positionX="-9" positionY="54" width="128" height="299"/>
+        <element name="WeatherDataModel" positionX="-112.5" positionY="-151.23828125" width="128" height="104"/>
+    </elements>
+</model>
