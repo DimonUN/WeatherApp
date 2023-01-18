@@ -1,3 +1,1 @@
 # WeatherApp
-
-**Some text here**
